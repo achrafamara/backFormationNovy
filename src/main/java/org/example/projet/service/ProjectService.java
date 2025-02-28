@@ -33,10 +33,9 @@ public class ProjectService {
         var project = projectRepository.findById(id)
                 .orElseThrow(() -> new DataNotFoundException("Project not found"));
 
-        // Récupérer l'employé depuis le microservice
         Employee employee = employeeRestClient.getEmployeeById(project.getEmployeeId());
+        project.setEmployee(employee);
 
-        // Retourner un nouveau DTO avec l'employé ajouté
         return new ProjectDto(
                 project.getId(),
                 project.getProjectName(),
@@ -49,7 +48,6 @@ public class ProjectService {
     public ProjectDto save(ProjectDto projectDto) {
         log.info("Saving new project: {}", projectDto);
 
-        // Vérifier si l'employé existe via Feign Client
         Employee employee = employeeRestClient.getEmployeeById(projectDto.employeeId());
         if (employee == null) {
             throw new DataNotFoundException("Employee not found");
@@ -73,7 +71,6 @@ public class ProjectService {
         var project = projectRepository.findById(id)
                 .orElseThrow(() -> new DataNotFoundException("Project not found"));
 
-        // Vérifier si l'employé existe via Feign Client
         Employee employee = employeeRestClient.getEmployeeById(projectDto.employeeId());
         if (employee == null) {
             throw new DataNotFoundException("Employee not found");
@@ -86,6 +83,7 @@ public class ProjectService {
     }
 
     public List<Project> findAllWithCategory(){
+
         return projectDao.getProjectRepository().findAllWithCategory();
     }
 }

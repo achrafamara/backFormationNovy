@@ -40,7 +40,6 @@ public class ProjectDao extends AbstractDao {
                 ))
                 .from(project);
 
-        // Filtrer par nom de projet
         var projectName = projectFilter.getProjectName();
         if (StringUtils.hasText(projectName)) {
             query.where(project.projectName.containsIgnoreCase(projectName));

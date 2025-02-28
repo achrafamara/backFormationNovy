@@ -39,6 +39,15 @@ public class ProjetApplication {
             log.info("Employee 1: {}", employee1.getName());
             log.info("Employee 2: {}", employee2.getName());
 
+            Category category1 = new Category();
+            category1.setCategoryName("Créer la base de données");
+            categoryRepository.save(category1);
+
+
+            Category category2 = new Category();
+            category2.setCategoryName("Développer l'interface utilisateur");
+            categoryRepository.save(category2);
+
             // Création des projets avec assignation des employés récupérés
             Project project1 = new Project();
             project1.setProjectName("Projet E-Commerce");
@@ -47,23 +56,16 @@ public class ProjetApplication {
 
             Project project2 = new Project();
             project2.setProjectName("Projet Gestion RH");
+            project1.setCategory(category1);
             project2.setEmployeeId(employee2.getId());
             project2.setEmployee(employee2);
 
             projectRepository.saveAll(List.of(project1, project2));
 
             // Création de tâches pour les projets
-            Category category1 = new Category();
-            category1.setCategoryName("Créer la base de données");
-            category1.setProjects(List.of(project1));
 
 
-            Category category2 = new Category();
-            category2.setCategoryName("Développer l'interface utilisateur");
-            category2.setProjects(List.of(project2));
 
-            Category category3 = new Category();
-            category3.setCategoryName("Configurer le système de paie");
 
 
             projectRepository.saveAll(List.of(project1, project2));
