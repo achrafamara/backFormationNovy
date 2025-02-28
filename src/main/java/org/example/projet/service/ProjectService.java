@@ -85,7 +85,7 @@ public class ProjectService {
         return projectMapper.toDto(projectRepository.save(project));
     }
 
-    public List<Project> findAllWithTask(){
+    public List<Project> findAllWithCategory(){
         return projectDao.getProjectRepository().findAllWithCategory();
     }
 }

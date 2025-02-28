@@ -44,9 +44,9 @@ public class ProjetRessource {
         return ResponseEntity.ok(projectService.update(id, projectDto));
     }
 
-    @GetMapping("/with-tasks")
-    public ResponseEntity<List<Project>> findAllWithTask() {
-        List<Project> projects = projectService.findAllWithTask();
+    @GetMapping("/with-category")
+    public ResponseEntity<List<Project>> findAllWithCategory() {
+        List<Project> projects = projectService.findAllWithCategory();
 
         return ResponseEntity.ok(projects);
 

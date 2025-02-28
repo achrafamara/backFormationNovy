@@ -21,7 +21,7 @@ public class Category {
     private String categoryName;
 
 
-    @OneToMany(mappedBy = "project")
+    @OneToMany(mappedBy = "category")
     private List<Project> projects;
 
 

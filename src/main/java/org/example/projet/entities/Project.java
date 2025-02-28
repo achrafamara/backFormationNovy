@@ -21,8 +21,8 @@ public class Project {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Category category;
-    private long employeeId;
 
+    private long employeeId;
 
     @Transient
     private Employee employee;
